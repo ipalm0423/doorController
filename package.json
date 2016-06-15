@@ -1,0 +1,23 @@
+{
+  "name": "server1.0",
+  "version": "1.0.0",
+  "description": "doorController",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipalm0423/doorController.git"
+  },
+  "author": "ipalm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ipalm0423/doorController/issues"
+  },
+  "homepage": "https://github.com/ipalm0423/doorController#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.6"
+  }
+}
