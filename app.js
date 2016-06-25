@@ -1,6 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var GPIOController = require("./GPIOController/GPIOController.js");
+
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/indexHTML/index.html');
@@ -19,10 +21,20 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
     socket.emit('chat message', msg);
+    
     if (msg == 'open'){
     console.log('door open');
+    GPIOController.writeToHighOnPin(12);
     }else if (msg == 'close'){
+    GPIOController.writeToLowOnPin(12);
     console.log('door close');
+    }else if (msg == 'blink'){
+      GPIOController.blinkOnPin(12);
+      console.log('door blink');
+    }else if (msg == 'read'){
+      GPIOController.readOnPin(12);
+    }else if (msg == 'cblink'){
+      GPIOController.continueBlinkOnPin(12);
     }
   });
   
@@ -39,3 +51,5 @@ io.on('connection', function(socket){
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
+
+
